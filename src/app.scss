@@ -1,0 +1,12 @@
+.app {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr;
+}
+
+.main-content {
+  background-color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
