@@ -1,8 +1,20 @@
+import TableRow from "../tableRow";
 import useQuestions from "../useQuestions";
 import "./table.scss";
 
-const Table = () => {
+const Table = ({ searchValue }) => {
   const { questions } = useQuestions();
+
+  const questionInfo = questions.map((question) => {
+    return question;
+  });
+
+  const filterByName = questions.filter((question) => {
+    let filterName = question.question
+      .toLowerCase()
+      .includes(searchValue.toLowerCase());
+    return filterName;
+  });
 
   return (
     <table className="table">
@@ -15,14 +27,11 @@ const Table = () => {
         </tr>
       </thead>
       <tbody className="table__body">
-        {questions.map((question) => (
-          <tr>
-            <td className="table__cell">{question.category}</td>
-            <td className="table__cell">{question.type}</td>
-            <td className="table__cell">{question.difficulty}</td>
-            <td className="table__cell">{question.question}</td>
-          </tr>
-        ))}
+        {searchValue === "" ? (
+          <TableRow data={questionInfo} />
+        ) : (
+          <TableRow data={filterByName} />
+        )}
       </tbody>
     </table>
   );
