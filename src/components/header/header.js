@@ -20,7 +20,6 @@ const Header = ({ questions, handleOnChange, handleCategoryOnChange }) => {
             <option value={question.category}>{question.category}</option>
           ))}
         </select>
-        <input type="reset" />
       </form>
       <Navigation />
     </header>
