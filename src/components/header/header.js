@@ -26,3 +26,5 @@ const Header = ({ questions, handleOnChange, handleCategoryOnChange }) => {
     </header>
   );
 };
+
+export default Header;
