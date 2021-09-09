@@ -6,15 +6,20 @@ import useQuestion from "./components/useQuestions";
 import "./app.scss";
 
 function App() {
-  const { searchValue, handleOnChange } = useSearch();
+  const { searchValue, handleOnChange, handleCategoryOnChange, categoryValue } =
+    useSearch();
   const { questions } = useQuestion();
 
   return (
     <section className="app">
-      <Header handleOnChange={handleOnChange}></Header>
+      <Header
+        questions={questions}
+        handleOnChange={handleOnChange}
+        handleCategoryOnChange={handleCategoryOnChange}
+      ></Header>
       <main className="main-content">
         <h1 className="main-content__title">Browse Questions</h1>
-        <Table searchValue={searchValue} />
+        <Table searchValue={searchValue} categoryValue={categoryValue} />
         <Pagination questions={questions} />
       </main>
     </section>

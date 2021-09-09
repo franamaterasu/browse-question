@@ -2,7 +2,7 @@ import TableRow from "../tableRow";
 import useQuestions from "../useQuestions";
 import "./table.scss";
 
-const Table = ({ searchValue }) => {
+const Table = ({ searchValue, categoryValue }) => {
   const { questions } = useQuestions();
 
   // Show initial questions
@@ -18,6 +18,15 @@ const Table = ({ searchValue }) => {
     return filterName;
   });
 
+  // Show questions filtered by question category
+  const filterByCategory = questions.filter((question) => {
+    let filterCategory = question.category
+      .toLowerCase()
+      .includes(categoryValue.toLowerCase());
+
+    return filterCategory;
+  });
+
   return (
     <table className="table">
       <thead className="table__head">
@@ -29,10 +38,14 @@ const Table = ({ searchValue }) => {
         </tr>
       </thead>
       <tbody className="table__body">
-        {searchValue === "" ? (
+        {searchValue === "" && categoryValue === "" ? (
           <TableRow data={questionInfo} />
-        ) : (
+        ) : searchValue !== "" && categoryValue === "" ? (
           <TableRow data={filterByName} />
+        ) : searchValue === "" && categoryValue !== "" ? (
+          <TableRow data={filterByCategory} />
+        ) : (
+          ""
         )}
       </tbody>
     </table>
