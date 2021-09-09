@@ -5,7 +5,12 @@ import "./header.scss";
 const Header = ({ handleOnChange }) => {
   return (
     <header className="header">
-      <input type="text" placeholder="Search" onChange={handleOnChange} />
+      <input
+        className="header__input"
+        type="text"
+        placeholder="Search by questions title..."
+        onChange={handleOnChange}
+      />
       <Navigation />
     </header>
   );

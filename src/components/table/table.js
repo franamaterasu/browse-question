@@ -5,10 +5,12 @@ import "./table.scss";
 const Table = ({ searchValue }) => {
   const { questions } = useQuestions();
 
+  // Show initial questions
   const questionInfo = questions.map((question) => {
     return question;
   });
 
+  // Show questions filtered by question title
   const filterByName = questions.filter((question) => {
     let filterName = question.question
       .toLowerCase()
